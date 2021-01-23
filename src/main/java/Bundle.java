@@ -1,4 +1,5 @@
 public class Bundle {
+
     private String bundleType;
     private int bundleVolume;
     private double bundlePrice;
