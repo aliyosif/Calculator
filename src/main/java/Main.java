@@ -21,15 +21,20 @@ public class Main {
 //    private static Bundle vb2 = new Bundle("VID", 5, 900);
 //    private static Bundle vb3 = new Bundle("VID", 9, 1530);
     private static List<Bundle> bundles = new ArrayList<>();
-    private static Calculator calculator;
+    private static List<Order> orders = new ArrayList<>();
+    private static Calculator calculator = new Calculator();
     private static IOManager ioManager = new IOManager();
 
 
     public static void main(String[] args) {
         println("Your Order Input:");
-        ioManager.readOrder();
-        ioManager.readBundles(bundles);
+        ioManager.readOrder(orders);
+        if (orders.size() != 0)
+            for (int i = 0; i < orders.size(); i++) {
+                System.out.println(orders.get(i).toString());
+            }
         waitResult();
+//        calculator.determineBundle(bundles, 15);
 
 //        ioManager.readBundles(bundles);
 //        for (Bundle bundle: bundles) {

@@ -27,8 +27,12 @@ public class Calculator {
         System.out.println(prompts);
     }
 
-    public static void determineBundle(List<Bundle> bundles) {
+    public static void determineBundle(List<Order> orders, List<Bundle> bundles) {
+        ioManager.readBundles(bundles);
 
+        List<Bundle> filteredBundles = bundles
+                .stream()
+                .collect(Collectors.toList());
     }
 
     public static void flacCalculator(Integer[] bundle, int target) {

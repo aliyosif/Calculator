@@ -27,17 +27,18 @@ public class IOManager {
         }
     }
 
-    public static void readOrder() {
+    public static void readOrder(List<Order> orders) {
         try {
             FileReader inputFile = new FileReader("src/main/resources/order.txt");
             Scanner parser = new Scanner(inputFile);
             while (parser.hasNextLine()) {
-                String file = parser.nextLine();
-                String[] parts = file.split(" ");
+                String order = parser.nextLine();
+                String[] parts = order.split(" ");
                 String bundleNum = parts[0];
                 String bundleType = parts[1];
                 int target = Integer.parseInt(bundleNum);
-                System.out.println(file);
+                orders.add(new Order(target, bundleType));
+//                System.out.println(order);
             }
             inputFile.close();
         } catch (FileNotFoundException exception) {
