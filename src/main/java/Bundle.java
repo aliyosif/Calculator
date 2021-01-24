@@ -33,4 +33,10 @@ public class Bundle {
     public void setVolume(int volume) {
         this.bundleVolume = volume;
     }
+
+    public String toString() {
+        return "Bundle Type is " + bundleType
+                + ", Bundle Volume is " + bundleVolume
+                + ", and Bundle Price is " + bundlePrice;
+    }
 }
