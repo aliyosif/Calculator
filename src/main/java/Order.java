@@ -1,30 +1,14 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Order {
 
-    private int target;
-    private String type;
+    private Map<Integer, String> order = new HashMap<Integer, String>();
+    private OrderItem orderItem;
 
-    public Order(int target, String type) {
-        this.target = target;
-        this.type = type;
-    }
+    public void filterOrders() {
 
-    public int getTarget() {
-        return this.target;
-    }
-
-    public String getType() {
-        return this.type;
-    }
-
-    public void setTarget(int theTarget) {
-        this.target = theTarget;
-    }
-
-    public void setType(int theType) {
-        this.target = theType;
-    }
-
-    public String toString() {
-        return target + " " + type;
     }
 }

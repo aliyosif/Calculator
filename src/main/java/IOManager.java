@@ -5,55 +5,47 @@ import java.io.*;
 
 public class IOManager {
 
-    public static void readBundles(List<Bundle> bundles) {
-        try {
-            FileReader inputFile = new FileReader("src/main/resources/bundle.txt");
-            Scanner parser = new Scanner(inputFile);
-            while (parser.hasNextLine()) {
-                String file = parser.nextLine();
-                String[] parts = file.split(", ");
-                String bundleType = parts[0];
-                String bundleVol = parts[1];
-                String bundlePrice = parts[2];
-                int volume = Integer.parseInt(bundleVol);
-                double price = Double.parseDouble(bundlePrice);
-                bundles.add(new Bundle(bundleType, volume, price));
-            }
-            inputFile.close();
-        } catch (FileNotFoundException exception) {
-            System.out.println("bundle.txt not found");
-        } catch (IOException exception) {
-            System.out.println("Unexpected I/O error occurred.");
-        }
-    }
-
-    public static void readOrder(List<Order> orders) {
+    public static List<OrderItem> readOrders() {
+        List<OrderItem> orders = new ArrayList<>();
+        String bundleNum = "";
         try {
             FileReader inputFile = new FileReader("src/main/resources/order.txt");
             Scanner parser = new Scanner(inputFile);
             while (parser.hasNextLine()) {
                 String order = parser.nextLine();
                 String[] parts = order.split(" ");
-                String bundleNum = parts[0];
+                bundleNum = parts[0];
                 String bundleType = parts[1];
                 int target = Integer.parseInt(bundleNum);
-                orders.add(new Order(target, bundleType));
-//                System.out.println(order);
+                orders.add(new OrderItem(target, bundleType));
+            }
+            if (!isInteger(bundleNum)) {
+                System.out.println("Invalid format found in order.txt");
+                System.out.println("HINT: Each line with a number followed by one space and the type code.");
+                System.exit(0);
             }
             inputFile.close();
+        } catch (NumberFormatException exception) {
+            System.out.println("Invalid format found in order.txt!!!");
+            System.exit(0);
         } catch (FileNotFoundException exception) {
-            System.out.println("bundle.txt not found");
+            System.out.println("order.txt not found");
+            System.exit(0);
         } catch (IOException exception) {
             System.out.println("Unexpected I/O error occurred.");
+            System.exit(0);
         }
+        return orders;
     }
 
-//    public static void writeStudents() {
-//        try {
-//            PrintWriter outputFile = new PrintWriter("result.txt");
-//            outputFile.close();
-//        } catch (IOException exception) {
-//            System.out.println("Unexpected I/O error occurred.");
-//        }
-//    }
+    public static boolean isInteger(String part) {
+        if (part == null)
+            return false;
+        for (int i = 0; i < part.length(); i++) {
+            if (!Character.isDigit(part.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
