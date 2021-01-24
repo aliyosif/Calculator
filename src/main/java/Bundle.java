@@ -1,17 +1,11 @@
 public class Bundle {
 
-    private String bundleType;
     private int bundleVolume;
     private double bundlePrice;
 
-    public Bundle(String bundleType, int bundleVolume, double bundlePrice) {
-        this.bundleType = bundleType;
+    public Bundle(int bundleVolume, double bundlePrice) {
         this.bundleVolume = bundleVolume;
         this.bundlePrice = bundlePrice;
-    }
-
-    public String getType() {
-        return this.bundleType;
     }
 
     public double getPrice() {
@@ -20,10 +14,6 @@ public class Bundle {
 
     public int getVolume() {
         return this.bundleVolume;
-    }
-
-    public void setType(String type) {
-        this.bundleType = type;
     }
 
     public void setPrice(double price) {
@@ -35,8 +25,7 @@ public class Bundle {
     }
 
     public String toString() {
-        return "Bundle Type is " + bundleType
-                + ", Bundle Volume is " + bundleVolume
+        return "Bundle Volume is " + bundleVolume
                 + ", and Bundle Price is " + bundlePrice;
     }
 }

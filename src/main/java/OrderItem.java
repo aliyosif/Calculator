@@ -1,7 +1,7 @@
 public class OrderItem {
 
-    private int target;
-    private String type;
+    private final int target;
+    private final String type;
 
     public OrderItem(int target, String type) {
         this.target = target;
@@ -14,14 +14,6 @@ public class OrderItem {
 
     public String getType() {
         return this.type;
-    }
-
-    public void setTarget(int theTarget) {
-        this.target = theTarget;
-    }
-
-    public void setType(int theType) {
-        this.target = theType;
     }
 
     public String toString() {

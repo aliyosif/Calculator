@@ -9,19 +9,23 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    private static List<Bundle> bundles = new ArrayList<>();
+//    private static List<Bundle> bundles = new ArrayList<>();
     private static List<OrderItem> orders = new ArrayList<>();
-    private static Calculator calculator = new Calculator();
+//    private static Calculator calculator = new Calculator();
     private static IOManager ioManager = new IOManager();
 
 
     public static void main(String[] args) {
 
-        if (ioManager.readOrders().size() != 0)
-            for (int i = 0; i < ioManager.readOrders().size(); i++) {
-                System.out.println(ioManager.readOrders().get(i).toString());
+        orders = ioManager.readOrders();
+        if (orders.size() != 0)
+            for (int i = 0; i < orders.size(); i++) {
+                System.out.println(orders.get(i).toString());
             }
         waitResult();
+        Order order = new Order();
+        System.out.println(order.filterOrders("VID", orders));
+
     }
 
     public static void println(String prompts) {
