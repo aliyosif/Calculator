@@ -2,34 +2,34 @@ import java.util.*;
 
 public class Order {
 
-    private final Map<Integer, String> orderMap = new HashMap<>();
+    private final Map<String, Integer> orderMap = new HashMap<>();
     private List<Integer> orderNum = new ArrayList<>();
 
-    public Map<Integer, String> filterOrders(String type, List<OrderItem> orders) {
+    public Map<String, Integer> filterOrders(String type, List<OrderItem> orders) {
         switch (type) {
             case "IMG":
                 for (OrderItem orderItem : orders) {
                     if (orderItem.getType().equalsIgnoreCase("IMG")) {
-                        orderMap.put(orderItem.getTarget(), "IMG");
+                        orderMap.put("IMG", orderItem.getTarget());
                     }
                 }
                 break;
             case "FLAC":
                 for (OrderItem orderItem : orders) {
                     if (orderItem.getType().equalsIgnoreCase("FLAC")) {
-                        orderMap.put(orderItem.getTarget(), "FLAC");
+                        orderMap.put("FLAC", orderItem.getTarget());
                     }
                 }
                 break;
             case "VID":
                 for (OrderItem orderItem : orders) {
                     if (orderItem.getType().equalsIgnoreCase("VID")) {
-                        orderMap.put(orderItem.getTarget(), "VID");
+                        orderMap.put("VID", orderItem.getTarget());
                     }
                 }
                 break;
             default:
-                orderMap.put(1, "No Format");
+                orderMap.put("No Format", 0);
                 break;
         }
         return orderMap;

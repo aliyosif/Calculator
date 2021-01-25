@@ -1,17 +1,23 @@
-public class ImageBundle extends Bundle {
+public class ImageBundle {
 
-    private final String bundleType;
+    private int bundleVolume;
+    private double bundlePrice;
 
     public ImageBundle(int bundleVolume, double bundlePrice) {
-        super(bundleVolume, bundlePrice);
-        this.bundleType = "IMG";
+        this.bundleVolume = bundleVolume;
+        this.bundlePrice = bundlePrice;
     }
 
-    public String getType() {
-        return this.bundleType;
+    public double getPrice() {
+        return this.bundlePrice;
+    }
+
+    public int getVolume() {
+        return this.bundleVolume;
     }
 
     public String toString() {
-        return "Bundle Type is " + bundleType + super.toString();
+        return "This IMG Bundle's Volume is " + bundleVolume
+                + ", and Bundle Price is " + bundlePrice;
     }
 }

@@ -9,7 +9,11 @@ import java.util.List;
 public class Calculator {
 
     private static List<Bundle> bundles = new ArrayList<>();
+    private static Bundle bundle = new Bundle();
     private static IOManager ioManager = new IOManager();
+    private static List<OrderItem> orders = new ArrayList<>();
+    private static Order order = new Order();
+
 
     public static void print(String prompts) {
         System.out.print(prompts);
@@ -19,22 +23,11 @@ public class Calculator {
         System.out.println(prompts);
     }
 
-    public static void determineBundle(List<OrderItem> orders, List<Bundle> bundles) {
-//        ioManager.readBundles(bundles);
-//        ioManager.readOrder(orders);
-        for (int i = 0; i < bundles.size(); i++) {
-            for (int j = 1; j < bundles.size(); j++) {
 
-            }
-        }
-        List<Bundle> filteredBundles = bundles
-                .stream()
-                .collect(Collectors.toList());
-    }
 
-    public static void start() {
+    public static void start(int target, List<Integer> bundleNum) {
         int bundles[] = {3, 5, 9};
-        int target = 38;
+        target = 38;
         int bundle[] = new int[target + 1];
         int min = getMinCount(target, bundles, bundle);
         if (min > Integer.MAX_VALUE - target) {

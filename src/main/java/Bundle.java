@@ -1,18 +1,42 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Bundle {
 
-    private final int bundleVolume;
-    private final double bundlePrice;
     private final Map<Integer, Double> imgBundle = new HashMap<>();
     private final Map<Integer, Double> flacBundle = new HashMap<>();
     private final Map<Integer, Double> vidBundle = new HashMap<>();
 
-    public Bundle(int bundleVolume, double bundlePrice) {
-        this.bundleVolume = bundleVolume;
-        this.bundlePrice = bundlePrice;
+    public List<Integer> determineBundle(String type, Map<Integer, Double> bundleMap) {
+        List<Integer> bundleNum;
+        switch (type) {
+            case "IMG":
+                bundleMap = filterImageBundle();
+                bundleNum = new ArrayList<>(bundleMap.keySet());
+                break;
+            case "FLAC":
+                bundleMap = filterAudioBundle();
+                bundleNum = new ArrayList<>(bundleMap.keySet());
+                break;
+            case "VID":
+                bundleMap = filterVideoBundle();
+                bundleNum = new ArrayList<>(bundleMap.keySet());
+                break;
+            default:
+                bundleNum = new ArrayList<>();
+                break;
+        }
+        return bundleNum;
+    }
+
+    public int[] convertBundle(List<Integer> bundleList) {
+        int[] bundleArray = new int[bundleList.size()];
+        for (int i = 0; i < bundleList.size(); i++) {
+            bundleArray[i] = bundleList.get(i);
+        }
+        return bundleArray;
     }
 
     public Map<Integer, Double> filterAudioBundle() {
@@ -33,18 +57,5 @@ public class Bundle {
         vidBundle.put(5, 900.0);
         vidBundle.put(9, 1530.00);
         return vidBundle;
-    }
-
-    public double getPrice() {
-        return this.bundlePrice;
-    }
-
-    public int getVolume() {
-        return this.bundleVolume;
-    }
-
-    public String toString() {
-        return "Bundle Volume is " + bundleVolume
-                + ", and Bundle Price is " + bundlePrice;
     }
 }
