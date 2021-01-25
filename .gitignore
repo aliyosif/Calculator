@@ -66,8 +66,9 @@ gradlew
 gradlew.bat
 settings.gradle
 build/
-src/main/resources/misc.txt
 src/main/resources/bundle.txt
+src/main/resources/misc.txt
+
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
