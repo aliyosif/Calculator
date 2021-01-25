@@ -11,20 +11,23 @@ public class Main {
 
 //    private static List<Bundle> bundles = new ArrayList<>();
     private static List<OrderItem> orders = new ArrayList<>();
-//    private static Calculator calculator = new Calculator();
+    private static Order order = new Order();
+    private static Calculator calculator = new Calculator();
     private static IOManager ioManager = new IOManager();
 
 
     public static void main(String[] args) {
+        calculator.start();
 
-        orders = ioManager.readOrders();
-        if (orders.size() != 0)
-            for (int i = 0; i < orders.size(); i++) {
-                System.out.println(orders.get(i).toString());
-            }
-        waitResult();
-        Order order = new Order();
-        System.out.println(order.filterOrders("VID", orders));
+//        orders = ioManager.readOrders();
+//        if (orders.size() != 0)
+//            for (int i = 0; i < orders.size(); i++) {
+//                System.out.println(orders.get(i).toString());
+//            }
+//        for (Integer number: order.getOrderNum(orders)) {
+//            System.out.println("Bundle Number: " + number);
+//        }
+//        waitResult();
 
     }
 
