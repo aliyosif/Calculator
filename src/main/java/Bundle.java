@@ -8,6 +8,7 @@ public class Bundle {
     private final Map<Integer, Double> imgBundle = new HashMap<>();
     private final Map<Integer, Double> flacBundle = new HashMap<>();
     private final Map<Integer, Double> vidBundle = new HashMap<>();
+    private final Map<String, int[]> mapBundle = new HashMap<>();
 
     public List<Integer> determineBundle(String type, Map<Integer, Double> bundleMap) {
         List<Integer> bundleNum;
@@ -37,6 +38,10 @@ public class Bundle {
             bundleArray[i] = bundleList.get(i);
         }
         return bundleArray;
+    }
+
+    public Map<String, int[]> mapBundle() {
+        return mapBundle;
     }
 
     public Map<Integer, Double> filterAudioBundle() {
