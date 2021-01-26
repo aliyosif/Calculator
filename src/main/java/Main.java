@@ -9,40 +9,31 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-//    private static List<Bundle> bundles = new ArrayList<>();
     private static List<OrderItem> orders = new ArrayList<>();
     private static Order order = new Order();
     private static OrderItem orderItem = new OrderItem(0, " ");
     private static Bundle bundle = new Bundle();
-    private static int[] bundleNum;
+    private static int[] bundles;
+    private static FilledBundle filledBundle = new FilledBundle();
     private static Calculator calculator = new Calculator();
     private static IOManager ioManager = new IOManager();
 
-
     public static void main(String[] args) {
-//        calculator.start();
-
-
-//        bundleNum = bundle.convertBundle(bundle.determineBundle("IMG", bundle.filterImageBundle()));
-//        System.out.println(Arrays.toString(bundleNum));
-//        for (Integer in: bundleNum) {
-//            System.out.println(in + " ");
-//        }
-//        for (int i = 0; i < bundleNum.size(); i++) {
-//            System.out.println(bundleNum.get(i) + " ");
-//        }
-
         orders = ioManager.readOrders();
-//        if (orders.size() != 0)
-//            for (int i = 0; i < orders.size(); i++) {
-//                System.out.println(orders.get(i).toString());
-//            }
-        order.mapOrder(orders).forEach((key, value) -> System.out.println(key + " : " + value));
-//        for (Integer number: order.getOrderNum(orders)) {
-//            System.out.println(number + " ");
-//        }
-//        waitResult();
-
+        order.mapOrder(orders).forEach((key, value) -> System.out.println(value + " " + key));
+        waitResult();
+        for (OrderItem item: orders) {
+            int target = order.mapOrder(orders).get(item.getType());
+            int[] bundleNum = new int[target + 1];
+            bundles = filledBundle.convertBundle(filledBundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
+            calculator.getMin(target, bundles, bundleNum);
+            calculator.start(target, item.getType(), bundles);
+        }
+//        int target = order.mapOrder(orders).get("VID");
+//        int[] bundleNum = new int[target + 1];
+//        bundles = filledBundle.convertBundle(filledBundle.determineBundle("VID", bundle.filterBundle("VID")));
+//        calculator.getMin(target, bundles, bundleNum);
+//        calculator.start(target, "VID", bundles);
     }
 
     public static void println(String prompts) {
@@ -61,7 +52,7 @@ public class Main {
         println("Output:");
     }
 
-    //    public static void writeStudents() {
+    //    public static void writeResult() {
 //        try {
 //            PrintWriter outputFile = new PrintWriter("result.txt");
 //            outputFile.close();
