@@ -1,3 +1,5 @@
+package com.steven;
+
 public class OrderItem {
 
     private final int target;

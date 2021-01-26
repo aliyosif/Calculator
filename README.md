@@ -1,4 +1,4 @@
-# Bundle Calculator
+# com.steven.Bundle com.steven.Calculator
 
 ## Context
 Social media Influencers have been basing the price of their social media post on a single post basis.  

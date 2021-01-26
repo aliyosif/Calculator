@@ -1,3 +1,5 @@
+package com.steven;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -5,9 +7,8 @@ import java.util.Map;
 
 public class Bundle {
 
-    private final Map<Integer, Double> bundle = new HashMap<>();
-
     public Map<Integer, Double> filterBundle(String type) {
+        Map<Integer, Double> bundle = new HashMap<>();
         switch (type) {
             case "IMG":
                 bundle.put(5, 450.00);
@@ -31,7 +32,7 @@ public class Bundle {
     }
 
     public List<Integer> determineBundle(String type, Map<Integer, Double> bundleMap) {
-        List<Integer> bundleNum;
+        List<Integer> bundleNum = new ArrayList<>();
         switch (type) {
             case "IMG":
                 bundleMap = filterBundle("IMG");

@@ -1,18 +1,24 @@
+package com.steven;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Calculator {
 
-    public static void start(int target, String type, int[] bundles) {
-
+    public static List<Integer> getResult(int target, String type, int[] bundles) {
+        List<Integer> result = new ArrayList<>();
         int[] bundle = new int[target + 1];
         int min = getMin(target, bundles, bundle);
         if (min > Integer.MAX_VALUE - target) {
             System.out.println("No suitable bundle found!!");
         } else {
-                System.out.println(target + " " + type);
             for (int i = target; i > 0;) {
-                System.out.println(bundle[i] + "\t");
+                result.add(bundle[i]);
                 i = i - bundle[i];
             }
         }
+        return result;
     }
 
     public static int getMin(int target, int[] bundles, int[] bundle) {

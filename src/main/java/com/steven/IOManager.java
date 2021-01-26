@@ -1,3 +1,5 @@
+package com.steven;
+
 import java.util.*;
 import java.io.*;
 
@@ -53,9 +55,31 @@ public class IOManager {
             for (OrderItem item: orders) {
                 int target = order.mapOrder(orders).get(item.getType());
                 int[] bundleNum = new int[target + 1];
+                double answer = 0;
+                double total = 0;
+                int count = 0;
                 bundles = bundle.convertBundle(bundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
+                System.out.println("");
+                System.out.println(target + " " + item.getType());
                 calculator.getMin(target, bundles, bundleNum);
-                calculator.start(target, item.getType(), bundles);
+//                for (Integer in: calculator.getResult(target, item.getType(), bundles)) {
+//                    if (bundle.filterBundle(item.getType()).containsKey(in)) {
+//                        System.out.println(in + " $" + bundle.filterBundle(item.getType()).get(in));
+//                        answer = in * bundle.filterBundle(item.getType()).get(in);
+//                        total += answer;
+//                    }
+//                }
+                for (Integer in: calculator.getResult(target, item.getType(), bundles)) {
+                    for (Integer num: calculator.getResult(target, item.getType(), bundles)) {
+
+                    }
+                    if (bundle.filterBundle(item.getType()).containsKey(in)) {
+                        System.out.println(in + " $" + bundle.filterBundle(item.getType()).get(in));
+                        answer = in * bundle.filterBundle(item.getType()).get(in);
+                        total += answer;
+                    }
+                }
+                System.out.println("Total: $" + total);
                 outputFile.println(item.getTarget() + " " + item.getType() + "\n"
                                     + calculator.getMin(target, bundles, bundleNum));
             }
