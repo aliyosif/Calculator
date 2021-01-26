@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class FilledBundle {
 
-    private Bundle bundle = new Bundle();
+    private final Bundle bundle = new Bundle();
 
     public List<Integer> determineBundle(String type, Map<Integer, Double> bundleMap) {
         List<Integer> bundleNum;
