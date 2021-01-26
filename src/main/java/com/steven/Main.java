@@ -24,7 +24,6 @@ public class Main {
         order.mapOrder(orders).forEach((key, value) -> System.out.println(value + " " + key));
         waitResult();
         ioManager.writeResult(orders, order, bundles, bundle, calculator);
-
     }
 
     public static void println(String prompts) {

@@ -66,7 +66,7 @@ public class IOManager {
                 bundles = bundle.convertBundle(bundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
                 System.out.println("");
                 System.out.println(target + " " + item.getType());
-                calculator.getMin(target, bundles, bundleNum);
+                calculator.getMinBundle(target, bundles, bundleNum);
                 for (Integer in: bundles) {
                     if (bundle.filterBundle(item.getType()).containsKey(in)) {
                         count = Collections.frequency(calculator.getResult(target, item.getType(), bundles), in);
@@ -79,7 +79,7 @@ public class IOManager {
                 }
                 System.out.println("Total: $" + total);
                 outputFile.println(item.getTarget() + " " + item.getType() + "\n"
-                                    + calculator.getMin(target, bundles, bundleNum));
+                                    + calculator.getMinBundle(target, bundles, bundleNum));
             }
             outputFile.close();
         } catch (FileNotFoundException exception) {
