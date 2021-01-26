@@ -3,7 +3,6 @@ package com.steven.algorithm;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Calculator {
 
     public static List<Integer> getResult(int target, String type, int[] types) {
