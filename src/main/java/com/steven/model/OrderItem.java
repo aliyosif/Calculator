@@ -1,4 +1,4 @@
-package com.steven;
+package com.steven.model;
 
 public class OrderItem {
 

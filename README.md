@@ -1,4 +1,4 @@
-# com.steven.Bundle com.steven.Calculator
+# com.steven.model.Bundle com.steven.algorithm.Calculator
 
 ## Context
 Social media Influencers have been basing the price of their social media post on a single post basis.  

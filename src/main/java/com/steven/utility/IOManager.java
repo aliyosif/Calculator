@@ -1,4 +1,9 @@
-package com.steven;
+package com.steven.utility;
+
+import com.steven.algorithm.Calculator;
+import com.steven.model.Bundle;
+import com.steven.model.Order;
+import com.steven.model.OrderItem;
 
 import java.util.*;
 import java.io.*;
@@ -62,20 +67,11 @@ public class IOManager {
                 System.out.println("");
                 System.out.println(target + " " + item.getType());
                 calculator.getMin(target, bundles, bundleNum);
-//                for (Integer in: calculator.getResult(target, item.getType(), bundles)) {
-//                    if (bundle.filterBundle(item.getType()).containsKey(in)) {
-//                        System.out.println(in + " $" + bundle.filterBundle(item.getType()).get(in));
-//                        answer = in * bundle.filterBundle(item.getType()).get(in);
-//                        total += answer;
-//                    }
-//                }
                 for (Integer in: calculator.getResult(target, item.getType(), bundles)) {
-                    for (Integer num: calculator.getResult(target, item.getType(), bundles)) {
-
-                    }
                     if (bundle.filterBundle(item.getType()).containsKey(in)) {
-                        System.out.println(in + " $" + bundle.filterBundle(item.getType()).get(in));
-                        answer = in * bundle.filterBundle(item.getType()).get(in);
+                        count = Collections.frequency(calculator.getResult(target, item.getType(), bundles), in);
+                        answer = count * bundle.filterBundle(item.getType()).get(in);
+                        System.out.println(count + " X " + in + " $" + answer);
                         total += answer;
                     }
                 }

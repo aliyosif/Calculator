@@ -1,4 +1,4 @@
-package com.steven;
+package com.steven.algorithm;
 
 import java.util.ArrayList;
 import java.util.List;
