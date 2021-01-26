@@ -46,4 +46,14 @@ public class IOManager {
         }
         return true;
     }
+
+//    public static void displayResult(List<OrderItem> orders, Order order, int[] bundles, FilledBundle filledBundle) {
+//        for (OrderItem item: orders) {
+//            int target = order.mapOrder(orders).get(item.getType());
+//            int[] bundleNum = new int[target + 1];
+//            bundles = filledBundle.convertBundle(filledBundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
+//            calculator.getMin(target, bundles, bundleNum);
+//            calculator.start(target, item.getType(), bundles);
+//        }
+//    }
 }

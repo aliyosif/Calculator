@@ -2,7 +2,7 @@ public class Calculator {
 
     public static void start(int target, String type, int[] bundles) {
 
-        int bundle[] = new int[target + 1];
+        int[] bundle = new int[target + 1];
         int min = getMin(target, bundles, bundle);
         if (min > Integer.MAX_VALUE - target) {
             System.out.println("No suitable bundle found!!");
@@ -15,9 +15,9 @@ public class Calculator {
         }
     }
 
-    public static int getMin(int target, int bundles[], int bundle[]) {
+    public static int getMin(int target, int[] bundles, int[] bundle) {
 
-        int min[] = new int[target + 1];
+        int[] min = new int[target + 1];
         min[0] = 0;
         for (int i = 1; i < target + 1; i++) {
             if (i >= bundles[0]) {
