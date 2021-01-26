@@ -67,12 +67,14 @@ public class IOManager {
                 System.out.println("");
                 System.out.println(target + " " + item.getType());
                 calculator.getMin(target, bundles, bundleNum);
-                for (Integer in: calculator.getResult(target, item.getType(), bundles)) {
+                for (Integer in: bundles) {
                     if (bundle.filterBundle(item.getType()).containsKey(in)) {
                         count = Collections.frequency(calculator.getResult(target, item.getType(), bundles), in);
-                        answer = count * bundle.filterBundle(item.getType()).get(in);
-                        System.out.println(count + " X " + in + " $" + answer);
-                        total += answer;
+                        if (count > 0) {
+                            answer = count * bundle.filterBundle(item.getType()).get(in);
+                            System.out.println(count + " X " + in + " $" + answer);
+                            total += answer;
+                        }
                     }
                 }
                 System.out.println("Total: $" + total);

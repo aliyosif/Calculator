@@ -32,7 +32,7 @@ public class Bundle {
     }
 
     public List<Integer> determineBundle(String type, Map<Integer, Double> bundleMap) {
-        List<Integer> bundleNum = new ArrayList<>();
+        List<Integer> bundleNum;
         switch (type) {
             case "IMG":
                 bundleMap = filterBundle("IMG");
