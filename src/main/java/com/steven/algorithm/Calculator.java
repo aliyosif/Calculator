@@ -11,7 +11,8 @@ public class Calculator {
         int[] bundle = new int[target + 1];
         int min = getMinBundle(target, types, bundle);
         if (min > Integer.MAX_VALUE - target) {
-            System.out.println("No suitable bundle found!!");
+//            System.out.println("No suitable bundle found!!");
+            System.out.print("");
         } else {
             for (int i = target; i > 0;) {
                 result.add(bundle[i]);

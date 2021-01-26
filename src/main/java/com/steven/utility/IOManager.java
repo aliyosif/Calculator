@@ -66,6 +66,7 @@ public class IOManager {
                 bundles = bundle.convertBundle(bundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
                 System.out.println("");
                 System.out.println(target + " " + item.getType());
+                outputFile.println(target + " " + item.getType());
                 calculator.getMinBundle(target, bundles, bundleNum);
                 for (Integer in: bundles) {
                     if (bundle.filterBundle(item.getType()).containsKey(in)) {
@@ -73,13 +74,14 @@ public class IOManager {
                         if (count > 0) {
                             answer = count * bundle.filterBundle(item.getType()).get(in);
                             System.out.println(count + " X " + in + " $" + answer);
+                            outputFile.println(count + " X " + in + " $" + answer);
                             total += answer;
                         }
                     }
                 }
                 System.out.println("Total: $" + total);
-                outputFile.println(item.getTarget() + " " + item.getType() + "\n"
-                                    + calculator.getMinBundle(target, bundles, bundleNum));
+                outputFile.println("Total: $" + total);
+                outputFile.println("");
             }
             outputFile.close();
         } catch (FileNotFoundException exception) {
