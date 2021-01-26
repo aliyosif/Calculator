@@ -15,18 +15,7 @@ public class Main {
         orders = ioManager.readOrders();
         order.mapOrder(orders).forEach((key, value) -> System.out.println(value + " " + key));
         waitResult();
-        for (OrderItem item: orders) {
-            int target = order.mapOrder(orders).get(item.getType());
-            int[] bundleNum = new int[target + 1];
-            bundles = bundle.convertBundle(bundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
-            calculator.getMin(target, bundles, bundleNum);
-            calculator.start(target, item.getType(), bundles);
-        }
-//        int target = order.mapOrder(orders).get("FLAC");
-//        int[] bundleNum = new int[target + 1];
-//        bundles = filledBundle.convertBundle(filledBundle.determineBundle("FLAC", bundle.filterBundle("FLAC")));
-//        calculator.getMin(target, bundles, bundleNum);
-//        calculator.start(target, "FLAC", bundles);
+        ioManager.writeResult(orders, order, bundles, bundle, calculator);
     }
 
     public static void println(String prompts) {
@@ -44,13 +33,4 @@ public class Main {
         println("");
         println("Output:");
     }
-
-    //    public static void writeResult() {
-//        try {
-//            PrintWriter outputFile = new PrintWriter("result.txt");
-//            outputFile.close();
-//        } catch (IOException exception) {
-//            System.out.println("Unexpected I/O error occurred.");
-//        }
-//    }
 }

@@ -47,13 +47,22 @@ public class IOManager {
         return true;
     }
 
-//    public static void displayResult(List<OrderItem> orders, Order order, int[] bundles, FilledBundle filledBundle) {
-//        for (OrderItem item: orders) {
-//            int target = order.mapOrder(orders).get(item.getType());
-//            int[] bundleNum = new int[target + 1];
-//            bundles = filledBundle.convertBundle(filledBundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
-//            calculator.getMin(target, bundles, bundleNum);
-//            calculator.start(target, item.getType(), bundles);
-//        }
-//    }
+    public static void writeResult(List<OrderItem> orders, Order order, int[] bundles, Bundle bundle, Calculator calculator) {
+        try {
+            PrintWriter outputFile = new PrintWriter("src/main/resources/result.txt");
+            for (OrderItem item: orders) {
+                int target = order.mapOrder(orders).get(item.getType());
+                int[] bundleNum = new int[target + 1];
+                bundles = bundle.convertBundle(bundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
+                calculator.getMin(target, bundles, bundleNum);
+                calculator.start(target, item.getType(), bundles);
+                outputFile.println(item.getTarget() + " " + item.getType() + "\n"
+                                    + calculator.getMin(target, bundles, bundleNum));
+            }
+            outputFile.close();
+        } catch (FileNotFoundException exception) {
+            System.out.println("order.txt not found");
+            System.exit(0);
+        }
+    }
 }
