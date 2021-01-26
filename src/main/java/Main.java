@@ -11,7 +11,6 @@ public class Main {
 
     private static List<OrderItem> orders = new ArrayList<>();
     private static Order order = new Order();
-    private static OrderItem orderItem = new OrderItem(0, " ");
     private static Bundle bundle = new Bundle();
     private static int[] bundles;
     private static FilledBundle filledBundle = new FilledBundle();
@@ -29,11 +28,11 @@ public class Main {
             calculator.getMin(target, bundles, bundleNum);
             calculator.start(target, item.getType(), bundles);
         }
-//        int target = order.mapOrder(orders).get("VID");
+//        int target = order.mapOrder(orders).get("FLAC");
 //        int[] bundleNum = new int[target + 1];
-//        bundles = filledBundle.convertBundle(filledBundle.determineBundle("VID", bundle.filterBundle("VID")));
+//        bundles = filledBundle.convertBundle(filledBundle.determineBundle("FLAC", bundle.filterBundle("FLAC")));
 //        calculator.getMin(target, bundles, bundleNum);
-//        calculator.start(target, "VID", bundles);
+//        calculator.start(target, "FLAC", bundles);
     }
 
     public static void println(String prompts) {

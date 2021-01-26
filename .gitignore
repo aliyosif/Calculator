@@ -68,6 +68,9 @@ settings.gradle
 build/
 src/main/resources/bundle.txt
 src/main/resources/misc.txt
+src/main/java/AudioBundle.java
+src/main/java/ImageBundle.java
+src/main/java/VideoBundle.java
 
 
 # mpeltonen/sbt-idea plugin
