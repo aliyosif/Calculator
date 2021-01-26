@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class Bundle {
 
@@ -55,9 +56,9 @@ public class Bundle {
 
     public int[] convertBundle(List<Integer> bundleList) {
         int[] bundleArray = new int[bundleList.size()];
-        for (int i = 0; i < bundleList.size(); i++) {
+        IntStream.range(0, bundleList.size()).forEach(i -> {
             bundleArray[i] = bundleList.get(i);
-        }
+        });
         return bundleArray;
     }
 }
