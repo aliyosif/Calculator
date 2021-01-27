@@ -66,12 +66,13 @@ gradlew
 gradlew.bat
 settings.gradle
 build/
+logs/
 src/main/resources/bundle.txt
 src/main/resources/misc.txt
 src/main/java/AudioBundle.java
 src/main/java/ImageBundle.java
 src/main/java/VideoBundle.java
-logs/
+
 
 
 # mpeltonen/sbt-idea plugin
