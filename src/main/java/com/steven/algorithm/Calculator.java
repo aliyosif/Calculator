@@ -1,19 +1,27 @@
 package com.steven.algorithm;
 
+import com.steven.model.Bundle;
+import com.steven.model.Order;
+import com.steven.model.OrderItem;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Calculator {
+
+    private static final Logger logger = LogManager.getLogger(Calculator.class);
 
     public static List<Integer> getResult(int target, String type, int[] types) {
         List<Integer> result = new ArrayList<>();
         int[] bundle = new int[target + 1];
         int min = getMinBundle(target, types, bundle);
         if (min > Integer.MAX_VALUE - target) {
-//            System.out.println("No suitable bundle found!!");
-            System.out.print("");
+            logger.error("");
         } else {
-            for (int i = target; i > 0;) {
+            for (int i = target; i > 0; ) {
                 result.add(bundle[i]);
                 i = i - bundle[i];
             }
@@ -22,7 +30,6 @@ public class Calculator {
     }
 
     public static int getMinBundle(int target, int[] types, int[] bundle) {
-
         int[] min = new int[target + 1];
         min[0] = 0;
         for (int i = 1; i < target + 1; i++) {
@@ -40,5 +47,35 @@ public class Calculator {
             }
         }
         return min[target];
+    }
+
+    public static String buildResult(Order order, int[] bundles, Bundle bundle) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (OrderItem item : order.getOrder()) {
+            int target = order.mapOrder().get(item.getType());
+            int[] bundleNum = new int[target + 1];
+            double answer;
+            double total = 0;
+            int count;
+            bundles = bundle.convertBundle(bundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
+            stringBuilder.append("\n");
+            stringBuilder.append(target + " " + item.getType());
+            stringBuilder.append("\n");
+            getMinBundle(target, bundles, bundleNum);
+            for (Integer in : bundles) {
+                if (bundle.filterBundle(item.getType()).containsKey(in)) {
+                    count = Collections.frequency(getResult(target, item.getType(), bundles), in);
+                    if (count > 0) {
+                        answer = count * bundle.filterBundle(item.getType()).get(in);
+                        stringBuilder.append(count + " X " + in + " $" + answer);
+                        stringBuilder.append("\n");
+                        total += answer;
+                    }
+                }
+            }
+            stringBuilder.append("Total: $" + total);
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
     }
 }

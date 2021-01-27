@@ -5,9 +5,14 @@ import java.util.*;
 public class Order {
 
     private final Map<String, Integer> orderMap = new HashMap<>();
+    private final List<OrderItem> itemList = new ArrayList<>();
 
-    public Map<String, Integer> mapOrder(List<OrderItem> orders) {
-        orders.stream().forEach(order -> orderMap.put(order.getType(), order.getTarget()));
+    public List<OrderItem> getOrder() {
+        return itemList;
+    }
+
+    public Map<String, Integer> mapOrder() {
+        itemList.forEach(orderItem -> orderMap.put(orderItem.getType(), orderItem.getTarget()));
         return orderMap;
     }
 }

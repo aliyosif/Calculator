@@ -3,42 +3,43 @@ package com.steven;
 import com.steven.algorithm.Calculator;
 import com.steven.model.Bundle;
 import com.steven.model.Order;
-import com.steven.model.OrderItem;
-import com.steven.utility.IOManager;
+import com.steven.model.IOManager;
+import lombok.Lombok;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    private static List<OrderItem> orders = new ArrayList<>();
     private static Order order = new Order();
-    private static Bundle bundle = new Bundle();
+    private static final Bundle bundle = new Bundle();
     private static int[] bundles;
-    private static Calculator calculator = new Calculator();
-    private static IOManager ioManager = new IOManager();
+    private static final Calculator calculator = new Calculator();
+    private static final Logger logger = LogManager.getLogger(Main.class);
+//    private static final Lombok lombok = new Lombok();
 
     public static void main(String[] args) {
-        orders = ioManager.readOrders();
-        order.mapOrder(orders).forEach((key, value) -> System.out.println(value + " " + key));
+        initialiseCalculator();
         waitResult();
-        ioManager.writeResult(orders, order, bundles, bundle, calculator);
+        String result = calculator.buildResult(order, bundles, bundle);
+        logger.info(result);
+        IOManager.writeResult(result);
     }
 
-    public static void println(String prompts) {
-        System.out.println(prompts);
+    private static void initialiseCalculator() {
+        order = IOManager.readOrder();
+        order.mapOrder().forEach((key, value) -> logger.info(value + " " + key));
     }
 
     private static void waitResult() {
-        println("");
-        println("Calculating...Please wait...");
+        logger.info("");
+        logger.info("Calculating...Please wait...");
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException ie) {
             Thread.currentThread().interrupt();
         }
-        println("");
-        println("Output:");
+        logger.info("");
     }
 }
