@@ -1,5 +1,4 @@
-Output: 
-
+Output:
 35 IMG
 1 X 5 $450.0
 3 X 10 $2400.0

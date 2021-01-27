@@ -51,29 +51,30 @@ public class Calculator {
 
     public static String buildResult(Order order, int[] bundles, Bundle bundle) {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Output:");
         for (OrderItem item : order.getOrder()) {
-            int target = order.mapOrder().get(item.getType());
+            int target = order.mapOrder().get(item.getMediaType());
             int[] bundleNum = new int[target + 1];
             double answer;
             double total = 0;
             int count;
-            bundles = bundle.convertBundle(bundle.determineBundle(item.getType(), bundle.filterBundle(item.getType())));
+            bundles = bundle.convertBundle(bundle.determineBundle(item.getMediaType(), bundle.filterBundle(item.getMediaType())));
             stringBuilder.append("\n");
-            stringBuilder.append(target + " " + item.getType());
+            stringBuilder.append(item);
             stringBuilder.append("\n");
             getMinBundle(target, bundles, bundleNum);
             for (Integer in : bundles) {
-                if (bundle.filterBundle(item.getType()).containsKey(in)) {
-                    count = Collections.frequency(getResult(target, item.getType(), bundles), in);
+                if (bundle.filterBundle(item.getMediaType()).containsKey(in)) {
+                    count = Collections.frequency(getResult(target, item.getMediaType(), bundles), in);
                     if (count > 0) {
-                        answer = count * bundle.filterBundle(item.getType()).get(in);
-                        stringBuilder.append(count + " X " + in + " $" + answer);
+                        answer = count * bundle.filterBundle(item.getMediaType()).get(in);
+                        stringBuilder.append(count).append(" X ").append(in).append(" $").append(answer);
                         stringBuilder.append("\n");
                         total += answer;
                     }
                 }
             }
-            stringBuilder.append("Total: $" + total);
+            stringBuilder.append("Total: $").append(total);
             stringBuilder.append("\n");
         }
         return stringBuilder.toString();

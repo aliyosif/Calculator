@@ -24,10 +24,10 @@ public class IOManager {
                 order.getOrder().add(new OrderItem(target, orderType));
             }
         } catch (NumberFormatException exception) {
-            logger.error("Invalid format found in order.txt!!!");
+            logger.error("Invalid format found in order.txt.");
             System.exit(0);
         } catch (FileNotFoundException exception) {
-            logger.error("order.txt not found");
+            logger.error("order.txt not found.");
             System.exit(0);
         } catch (IOException exception) {
             logger.error("Unexpected I/O error occurred.");
@@ -38,10 +38,9 @@ public class IOManager {
 
     public static void writeResult(String result) {
         try (PrintWriter outputFile = new PrintWriter("src/main/resources/result.txt")) {
-            outputFile.println("Output: ");
             outputFile.println(result);
         } catch (FileNotFoundException exception) {
-            logger.error("order.txt not found");
+            logger.error("order.txt not found.");
             System.exit(0);
         }
     }

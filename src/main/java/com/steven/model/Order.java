@@ -1,18 +1,16 @@
 package com.steven.model;
 
+import lombok.Getter;
+
 import java.util.*;
 
 public class Order {
 
     private final Map<String, Integer> orderMap = new HashMap<>();
-    private final List<OrderItem> itemList = new ArrayList<>();
-
-    public List<OrderItem> getOrder() {
-        return itemList;
-    }
+    @Getter private final List<OrderItem> order = new ArrayList<>();
 
     public Map<String, Integer> mapOrder() {
-        itemList.forEach(orderItem -> orderMap.put(orderItem.getType(), orderItem.getTarget()));
+        order.forEach(orderItem -> orderMap.put(orderItem.getMediaType(), orderItem.getOrderNumber()));
         return orderMap;
     }
 }

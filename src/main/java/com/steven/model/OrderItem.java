@@ -1,24 +1,18 @@
 package com.steven.model;
 
+import lombok.Getter;
+
 public class OrderItem {
 
-    private final int target;
-    private final String type;
+    @Getter private final int orderNumber;
+    @Getter private final String mediaType;
 
-    public OrderItem(int target, String type) {
-        this.target = target;
-        this.type = type;
-    }
-
-    public int getTarget() {
-        return this.target;
-    }
-
-    public String getType() {
-        return this.type;
+    public OrderItem(int orderNumber, String mediaType) {
+        this.orderNumber = orderNumber;
+        this.mediaType = mediaType;
     }
 
     public String toString() {
-        return target + " " + type;
+        return orderNumber + " " + mediaType;
     }
 }
